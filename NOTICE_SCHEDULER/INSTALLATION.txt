@@ -1,0 +1,99 @@
+========================================
+NOTICE SENDER - QUICK INSTALLATION GUIDE
+========================================
+
+STEP 1: Install XAMPP
+----------------------
+1. Download XAMPP from: https://www.apachefriends.org/
+2. Install XAMPP on your computer
+3. Open XAMPP Control Panel
+4. Start "Apache" and "MySQL" modules
+
+STEP 2: Copy Project Files
+---------------------------
+1. Copy the entire "NOTICE_SCHEDULER" folder (or rename it to "notice-sender")
+2. Paste it into: C:\xampp\htdocs\
+3. Final path should be: C:\xampp\htdocs\NOTICE_SCHEDULER\
+   (or C:\xampp\htdocs\notice-sender\ if you renamed it)
+
+STEP 3: Create Database
+------------------------
+1. Open your web browser
+2. Go to: http://localhost/phpmyadmin
+3. Click on "Import" tab at the top
+4. Click "Choose File" button
+5. Navigate to: C:\xampp\htdocs\NOTICE_SCHEDULER\database\schema.sql
+   (or C:\xampp\htdocs\notice-sender\database\schema.sql if you renamed the folder)
+6. Click "Go" button at the bottom
+7. Wait for success message
+
+STEP 4: Access the Application
+-------------------------------
+1. Open your web browser
+2. Go to: http://localhost/NOTICE_SCHEDULER
+   (or http://localhost/notice-sender if you renamed the folder)
+3. You should see the login page
+
+STEP 5: Login as Admin
+-----------------------
+Use these credentials to login as admin:
+Email: admin@noticeboard.com
+Password: admin123
+
+STEP 6: Test Student Registration
+----------------------------------
+1. Click "Register" on login page
+2. Fill in the form with your details
+3. Submit the form
+4. You will receive an OTP (displayed on screen if email not configured)
+5. Enter the OTP to verify your account
+6. Login as admin and approve the new student account
+7. Now you can login as the student
+
+========================================
+TROUBLESHOOTING
+========================================
+
+Problem: Cannot access http://localhost/NOTICE_SCHEDULER
+Solution: 
+- Make sure Apache is running in XAMPP
+- Check if folder is in correct location: C:\xampp\htdocs\NOTICE_SCHEDULER\
+- Or use http://localhost/notice-sender if you renamed the folder
+
+Problem: Database connection error
+Solution:
+- Make sure MySQL is running in XAMPP
+- Check if database was imported correctly in phpMyAdmin
+
+Problem: OTP not received
+Solution:
+- OTP will be displayed on screen for testing
+- To enable email, configure SMTP settings in config/config.php
+
+Problem: Login not working
+Solution:
+- Clear browser cookies and cache
+- Make sure you imported the database correctly
+- Use default admin credentials: admin@noticeboard.com / admin123
+
+========================================
+NEED HELP?
+========================================
+
+1. Check README.md for detailed documentation
+2. Verify all files are in correct locations
+3. Ensure XAMPP Apache and MySQL are running
+4. Check browser console for JavaScript errors (F12)
+
+========================================
+DEFAULT ACCOUNTS
+========================================
+
+Admin:
+Email: admin@noticeboard.com
+Password: admin123
+
+Students and Staff:
+Must register or be created by admin
+
+========================================

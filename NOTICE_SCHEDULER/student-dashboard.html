@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - CampusChrono</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1>📚 CampusChrono - Student</h1>
+            <div class="nav-right">
+                <span id="userName"></span>
+                <button onclick="showProfile()" class="btn btn-primary">👤 Profile</button>
+                <button onclick="logout()" class="btn btn-secondary">Logout</button>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <ul class="menu">
+                <li><a href="#" onclick="showSection('notices')" class="active">📢 My Notices</a></li>
+            </ul>
+        </div>
+        
+        <div class="main-content">
+            <div id="noticesSection" class="section active">
+                <h2>Notices for You</h2>
+                <div id="noticesList"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Notice Detail Modal -->
+    <div id="noticeModal" class="modal">
+        <div class="modal-content modal-large">
+            <span class="close" onclick="closeNoticeModal()">&times;</span>
+            <div id="noticeDetail"></div>
+            <div id="attachmentsSection"></div>
+            <div id="commentsSection">
+                <h3>💬 Comments</h3>
+                <div id="commentsList"></div>
+                <form id="commentForm">
+                    <textarea id="commentText" placeholder="Add a comment..." rows="3" required></textarea>
+                    <button type="submit" class="btn btn-primary">Post Comment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Profile Modal -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeProfileModal()">&times;</span>
+            <h3>My Profile</h3>
+            <div id="profileDetails"></div>
+        </div>
+    </div>
+    
+    <script src="assets/js/student-dashboard.js"></script>
+</body>
+</html>

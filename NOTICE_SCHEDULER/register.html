@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - CampusChrono</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="auth-box">
+            <h1>CampusChrono</h1>
+            <h2>Registration</h2>
+            
+            <div class="info-box">
+                <p><strong>⚠️ Important:</strong> Please use your official college domain email address for registration. Applications with personal email addresses may not be approved.</p>
+            </div>
+            
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="role">I am a *</label>
+                    <select id="role" name="role" required onchange="handleRoleChange()">
+                        <option value="">Select Role</option>
+                        <option value="Student">Student</option>
+                        <option value="Staff">Teaching Staff</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">College Email *</label>
+                    <input type="email" id="email" name="email" required placeholder="yourname@college.edu">
+                    <small>Use your official college email address</small>
+                </div>
+                
+                <div class="form-group" id="departmentGroup">
+                    <label for="department">Department *</label>
+                    <select id="department" name="department" required onchange="loadClassesByDept()">
+                        <option value="">Select Department</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="classGroup" style="display: none;">
+                    <label for="class">Class *</label>
+                    <select id="class" name="class" required>
+                        <option value="">Select Class</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="rollNoGroup" style="display: none;">
+                    <label for="roll_no">Roll Number *</label>
+                    <input type="text" id="roll_no" name="roll_no" placeholder="Enter your roll number">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password *</label>
+                    <input type="password" id="password" name="password" required minlength="6" placeholder="Minimum 6 characters">
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password *</label>
+                    <input type="password" id="confirm_password" name="confirm_password" required placeholder="Re-enter password">
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+            
+            <div class="links">
+                <a href="index.html">Back to Login</a>
+            </div>
+            
+            <div id="message" class="message"></div>
+        </div>
+        
+        <!-- OTP Verification Modal -->
+        <div id="otpModal" class="modal">
+            <div class="modal-content">
+                <h3>Verify OTP</h3>
+                <p>Enter the OTP sent to your email</p>
+                <input type="text" id="otpInput" placeholder="Enter 6-digit OTP" maxlength="6">
+                <button onclick="verifyOTP()" class="btn btn-primary">Verify</button>
+                <div id="otpMessage" class="message"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="assets/js/register.js"></script>
+</body>
+</html>

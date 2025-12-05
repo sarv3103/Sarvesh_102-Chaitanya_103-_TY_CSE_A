@@ -1,0 +1,65 @@
+===============================================
+QUICK FIX: Department Dropdown Not Loading
+===============================================
+
+PROBLEM: Department dropdown is empty on registration page
+
+MOST LIKELY CAUSE: Database not imported yet
+
+QUICK FIX (3 steps):
+--------------------
+
+1. TEST IF DEPARTMENTS EXIST:
+   Open: http://localhost/NOTICE_SCHEDULER/test-departments.php
+   
+   If you see departments listed → Go to step 3
+   If NO departments shown → Go to step 2
+
+2. IMPORT DATABASE:
+   a) Open: http://localhost/phpmyadmin
+   b) Click "Import" tab
+   c) Choose file: C:\xampp\htdocs\NOTICE_SCHEDULER\database\schema.sql
+   d) Click "Go"
+   e) Run: http://localhost/NOTICE_SCHEDULER/fix-admin-password.php
+
+3. TEST REGISTRATION:
+   a) Open: http://localhost/NOTICE_SCHEDULER/register.html
+   b) Press F12 (open console)
+   c) Check for errors in console
+   d) Department dropdown should now have options:
+      - Computer Science
+      - Information Technology
+      - Electronics
+      - Mechanical
+      - Civil
+
+HOW IT WORKS:
+-------------
+✓ When page loads → JavaScript calls api/get-departments.php
+✓ API fetches departments from database
+✓ Dropdown is populated automatically
+✓ When admin adds/edits/deletes departments → changes appear immediately
+✓ Same for classes - loads based on selected department
+
+ADMIN CAN MANAGE:
+-----------------
+✓ Login as: admin@noticeboard.com / admin123
+✓ Click "Departments" → Create/Edit/Delete departments
+✓ Click "Classes" → Create/Edit/Delete classes
+✓ All changes auto-update in registration form
+
+USER-SPECIFIC:
+--------------
+✓ Students: Need Department + Class + Roll Number
+✓ Staff: Need Department only (no class/roll number)
+✓ Dropdowns show only active departments/classes
+✓ Classes filtered by selected department
+
+STILL NOT WORKING?
+------------------
+1. Check XAMPP: Apache and MySQL must be running (green)
+2. Check browser console (F12) for errors
+3. Test API directly: http://localhost/NOTICE_SCHEDULER/api/get-departments.php
+4. Read full guide: DEPARTMENT_DROPDOWN_FIX.md
+
+===============================================

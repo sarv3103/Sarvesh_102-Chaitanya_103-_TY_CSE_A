@@ -1,0 +1,259 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║              CAMPUSCHRONO - DEPLOYMENT PACKAGE                               ║
+║           How to Deploy on Another PC (Step-by-Step)                         ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+✅ WHAT YOU NEED:
+
+1. ✅ Complete project folder: NOTICE_SCHEDULER
+2. ✅ Database SQL file: database/schema.sql
+3. ✅ XAMPP installed on target PC
+4. ✅ Gmail account with app password (optional, for emails)
+
+═══════════════════════════════════════════════════════════════════════════════
+📦 DEPLOYMENT STEPS
+═══════════════════════════════════════════════════════════════════════════════
+
+STEP 1: INSTALL XAMPP
+─────────────────────
+1. Download XAMPP from: https://www.apachefriends.org/
+2. Install with these components:
+   ✅ Apache
+   ✅ MySQL
+   ✅ PHP
+   ✅ phpMyAdmin
+3. Install to: C:\xampp\
+
+STEP 2: COPY PROJECT FILES
+──────────────────────────
+1. Copy your entire NOTICE_SCHEDULER folder
+2. Paste it in: C:\xampp\htdocs\
+3. Final path: C:\xampp\htdocs\NOTICE_SCHEDULER\
+
+STEP 3: START SERVICES
+──────────────────────
+1. Open XAMPP Control Panel
+2. Click "Start" for Apache
+3. Click "Start" for MySQL
+4. Both should show green "Running" status
+
+STEP 4: CREATE DATABASE
+───────────────────────
+1. Open browser
+2. Go to: http://localhost/phpmyadmin
+3. Click "New" in left sidebar
+4. Database name: notice_sender
+5. Collation: utf8mb4_general_ci
+6. Click "Create"
+
+STEP 5: IMPORT DATABASE
+───────────────────────
+1. Click on "notice_sender" database (left sidebar)
+2. Click "Import" tab (top menu)
+3. Click "Choose File"
+4. Select: NOTICE_SCHEDULER/database/schema.sql
+5. Click "Go" at bottom
+6. Wait for "Import has been successfully finished"
+7. You should see 10+ tables created
+
+STEP 6: VERIFY DATABASE
+───────────────────────
+Check these tables exist:
+✅ users (with 1 admin user)
+✅ roles (3 roles)
+✅ departments (7 departments)
+✅ classes (32 classes)
+✅ notices
+✅ notice_targets
+✅ notice_attachments
+✅ notice_views
+✅ comments
+✅ otp_tokens
+
+STEP 7: CONFIGURE APPLICATION (Optional)
+────────────────────────────────────────
+Only if you changed folder name or want to use email:
+
+1. Open: NOTICE_SCHEDULER/config/config.php
+2. Update BASE_URL if folder name changed:
+   define('BASE_URL', 'http://localhost/YOUR_FOLDER_NAME');
+3. Update email settings if you want emails to work:
+   define('SMTP_USER', 'your-email@gmail.com');
+   define('SMTP_PASS', 'your-app-password');
+4. Save file
+
+STEP 8: ACCESS APPLICATION
+──────────────────────────
+1. Open browser
+2. Go to: http://localhost/NOTICE_SCHEDULER/
+3. You should see the login page
+
+STEP 9: LOGIN AS ADMIN
+──────────────────────
+Default admin credentials:
+Email: admin@noticeboard.com
+Password: admin123
+
+STEP 10: TEST EVERYTHING
+────────────────────────
+✅ Login as admin
+✅ Create a test notice
+✅ Register a new user
+✅ Approve the user
+✅ Login as that user
+✅ View notices
+
+═══════════════════════════════════════════════════════════════════════════════
+🚫 NO GIT ISSUES!
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ This project does NOT use Git
+✅ No Git dependencies
+✅ No .git folder needed
+✅ Works completely standalone
+✅ Just copy folder and import database
+✅ No version control conflicts
+✅ No remote repository needed
+
+═══════════════════════════════════════════════════════════════════════════════
+📁 WHAT TO COPY
+═══════════════════════════════════════════════════════════════════════════════
+
+Copy the ENTIRE folder with all these:
+
+NOTICE_SCHEDULER/
+├── api/ (all PHP files)
+├── assets/ (CSS, JS files)
+├── config/ (configuration files)
+├── database/ (schema.sql - IMPORTANT!)
+├── includes/ (functions.php)
+├── uploads/ (empty folder for file uploads)
+├── vendor/ (PHPMailer library)
+├── *.html (all HTML files)
+├── *.php (all PHP files)
+└── .htaccess
+
+IMPORTANT FILES:
+✅ database/schema.sql - Complete database with sample data
+✅ config/config.php - Configuration
+✅ config/database.php - Database connection
+✅ All HTML files (dashboards)
+✅ All API files
+✅ All JavaScript files
+✅ PHPMailer library
+
+═══════════════════════════════════════════════════════════════════════════════
+🔧 TROUBLESHOOTING
+═══════════════════════════════════════════════════════════════════════════════
+
+PROBLEM: "Database connection failed"
+SOLUTION: 
+- Check MySQL is running in XAMPP
+- Verify database name is "notice_sender"
+- Check config/database.php settings
+
+PROBLEM: "Page not found"
+SOLUTION:
+- Check Apache is running in XAMPP
+- Verify folder is in htdocs
+- Check URL: http://localhost/NOTICE_SCHEDULER/
+
+PROBLEM: "Tables not found"
+SOLUTION:
+- Import database/schema.sql again
+- Check database name is correct
+- Verify all tables created
+
+PROBLEM: "Email not working"
+SOLUTION:
+- Set EMAIL_ENABLED = false in config.php for testing
+- OTP will show on screen instead
+- Configure Gmail app password later
+
+PROBLEM: "Permission denied for uploads"
+SOLUTION:
+- Right-click uploads folder
+- Properties → Security
+- Give "Everyone" write permission
+
+═══════════════════════════════════════════════════════════════════════════════
+📧 EMAIL SETUP (Optional)
+═══════════════════════════════════════════════════════════════════════════════
+
+If you want email notifications to work:
+
+1. Create Gmail account or use existing
+2. Enable 2-factor authentication
+3. Generate app-specific password:
+   - Google Account → Security
+   - 2-Step Verification
+   - App passwords
+   - Select "Mail" and "Windows Computer"
+   - Copy the 16-character password
+4. Update config/config.php:
+   define('SMTP_USER', 'your-email@gmail.com');
+   define('SMTP_PASS', 'xxxx xxxx xxxx xxxx');
+   define('EMAIL_ENABLED', true);
+
+═══════════════════════════════════════════════════════════════════════════════
+✅ DEPLOYMENT CHECKLIST
+═══════════════════════════════════════════════════════════════════════════════
+
+Before deploying, verify:
+☐ XAMPP installed
+☐ Apache running
+☐ MySQL running
+☐ Project folder copied to htdocs
+☐ Database created (notice_sender)
+☐ schema.sql imported successfully
+☐ All tables visible in phpMyAdmin
+☐ Can access http://localhost/NOTICE_SCHEDULER/
+☐ Can login with admin credentials
+☐ Can create test notice
+
+═══════════════════════════════════════════════════════════════════════════════
+🎯 QUICK START COMMANDS
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Start XAMPP services
+2. Open: http://localhost/phpmyadmin
+3. Create database: notice_sender
+4. Import: database/schema.sql
+5. Open: http://localhost/NOTICE_SCHEDULER/
+6. Login: admin@noticeboard.com / admin123
+
+═══════════════════════════════════════════════════════════════════════════════
+📊 DEFAULT DATA INCLUDED
+═══════════════════════════════════════════════════════════════════════════════
+
+The schema.sql file includes:
+
+✅ 3 Roles: Admin, Staff, Student
+✅ 1 Admin User: admin@noticeboard.com / admin123
+✅ 7 Departments: CSE, IT, EXTC, MECH, CIVIL, EE, CHEM
+✅ 32 Classes: Linked to departments
+✅ Empty tables for: notices, users, comments, etc.
+
+You can start using immediately after import!
+
+═══════════════════════════════════════════════════════════════════════════════
+🔒 SECURITY NOTES
+═══════════════════════════════════════════════════════════════════════════════
+
+After deployment:
+1. Change admin password immediately
+2. Delete all test PHP files (test-*.php)
+3. Set proper file permissions
+4. Use strong passwords
+5. Enable HTTPS in production
+6. Regular database backups
+
+═══════════════════════════════════════════════════════════════════════════════
+✅ DEPLOYMENT COMPLETE!
+═══════════════════════════════════════════════════════════════════════════════
+
+Your CampusChrono system is now ready to use on the new PC!
+
+No Git issues, no dependencies, just copy and import!
+
+═══════════════════════════════════════════════════════════════════════════════

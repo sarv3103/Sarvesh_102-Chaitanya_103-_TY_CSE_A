@@ -1,0 +1,85 @@
+========================================
+FIX LOGIN ISSUE - FOLLOW THESE STEPS
+========================================
+
+Your login is failing because the admin password
+hash in the database is incorrect.
+
+STEP 1: Diagnose the Problem
+-----------------------------
+Open your browser and go to:
+http://localhost/NOTICE_SCHEDULER/diagnose-login.php
+
+This will show you EXACTLY what's wrong.
+
+STEP 2: Fix the Password
+-------------------------
+Open your browser and go to:
+http://localhost/NOTICE_SCHEDULER/fix-admin-password.php
+
+This will:
+- Reset admin password to correct hash
+- Set admin as verified and active
+- Show you success message
+
+STEP 3: Try Login Again
+------------------------
+Go to:
+http://localhost/NOTICE_SCHEDULER
+
+Login with:
+Email: admin@noticeboard.com
+Password: admin123
+
+STEP 4: Clean Up (IMPORTANT!)
+------------------------------
+After successful login, DELETE these files:
+- diagnose-login.php
+- fix-admin-password.php
+- test-connection.php
+- setup-admin.php
+- LOGIN_FIX_INSTRUCTIONS.txt
+
+========================================
+WHY IS THIS HAPPENING?
+========================================
+
+The password hash in the database doesn't match
+the password you're entering. This can happen if:
+
+1. Database was imported incorrectly
+2. Password hash format is wrong
+3. PHP version mismatch
+
+The fix-admin-password.php script will create
+a NEW correct hash using your server's PHP.
+
+========================================
+ALTERNATIVE: Manual Fix via phpMyAdmin
+========================================
+
+If the scripts don't work:
+
+1. Go to: http://localhost/phpmyadmin
+2. Open database: notice_sender
+3. Click on table: users
+4. Find row with email: admin@noticeboard.com
+5. Click "Edit"
+6. In password_hash field, paste this:
+   $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
+7. Set is_verified = 1
+8. Set is_active = 1
+9. Click "Go"
+10. Try login again
+
+========================================
+STILL NOT WORKING?
+========================================
+
+1. Check XAMPP - MySQL must be running
+2. Check database exists: notice_sender
+3. Check browser console (F12) for errors
+4. Clear browser cache and cookies
+5. Try different browser
+
+========================================

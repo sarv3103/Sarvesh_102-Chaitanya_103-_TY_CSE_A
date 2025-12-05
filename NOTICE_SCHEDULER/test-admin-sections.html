@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Admin Sections</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+        .test-card { background: white; padding: 20px; margin: 20px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .test-card h2 { color: #667eea; margin-top: 0; }
+        .btn { padding: 10px 20px; background: #667eea; color: white; border: none; border-radius: 5px; cursor: pointer; margin: 5px; }
+        .btn:hover { background: #5568d3; }
+        .result { background: #f8f9fa; padding: 15px; margin: 10px 0; border-radius: 5px; white-space: pre-wrap; font-family: monospace; }
+        .success { color: green; }
+        .error { color: red; }
+        .warning { color: orange; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Admin Sections Test</h1>
+    
+    <div class="test-card">
+        <h2>1. Test Pending Users API</h2>
+        <button class="btn" onclick="testPendingUsers()">Test Pending Users</button>
+        <div id="pendingResult" class="result"></div>
+    </div>
+    
+    <div class="test-card">
+        <h2>2. Test All Users API</h2>
+        <button class="btn" onclick="testAllUsers()">Test All Users</button>
+        <div id="usersResult" class="result"></div>
+    </div>
+    
+    <div class="test-card">
+        <h2>3. Test Classes API</h2>
+        <button class="btn" onclick="testClasses()">Test Classes</button>
+        <div id="classesResult" class="result"></div>
+    </div>
+    
+    <div class="test-card">
+        <h2>4. Check Database Status</h2>
+        <button class="btn" onclick="window.open('check-pending-users.php', '_blank')">Check Database</button>
+        <p>Opens in new tab to show all users and their status</p>
+    </div>
+    
+    <div class="test-card">
+        <h2>5. Quick Actions</h2>
+        <button class="btn" onclick="window.location.href='admin-dashboard.html'">Open Admin Dashboard</button>
+        <button class="btn" onclick="window.location.href='register.html'">Register New User</button>
+    </div>
+
+    <script>
+        async function testPendingUsers() {
+            const result = document.getElementById('pendingResult');
+            result.innerHTML = 'Loading...';
+            
+            try {
+                const response = await fetch('api/admin/users.php');
+                const data = await response.json();
+                
+                if (data.success) {
+                    const allUsers = data.data;
+                    const pendingUsers = allUsers.filter(u => u.is_verified == 1 && u.is_active == 0);
+                    
+                    result.innerHTML = `<span class="success">✅ API Working</span>\n\n`;
+                    result.innerHTML += `Total Users: ${allUsers.length}\n`;
+                    result.innerHTML += `Pending Users: ${pendingUsers.length}\n\n`;
+                    
+                    if (pendingUsers.length > 0) {
+                        result.innerHTML += `Pending Users List:\n`;
+                        pendingUsers.forEach(u => {
+                            result.innerHTML += `- ${u.name} (${u.email}) - ${u.role_name}\n`;
+                        });
+                    } else {
+                        result.innerHTML += `<span class="warning">⚠️ No pending users found</span>\n\n`;
+                        result.innerHTML += `To test:\n`;
+                        result.innerHTML += `1. Register a new user\n`;
+                        result.innerHTML += `2. Verify OTP from email\n`;
+                        result.innerHTML += `3. User will appear in pending approvals\n`;
+                    }
+                } else {
+                    result.innerHTML = `<span class="error">❌ Error: ${data.message}</span>`;
+                }
+            } catch (error) {
+                result.innerHTML = `<span class="error">❌ Error: ${error.message}</span>`;
+            }
+        }
+        
+        async function testAllUsers() {
+            const result = document.getElementById('usersResult');
+            result.innerHTML = 'Loading...';
+            
+            try {
+                const response = await fetch('api/admin/get-all-users.php');
+                const data = await response.json();
+                
+                if (data.success) {
+                    result.innerHTML = `<span class="success">✅ API Working</span>\n\n`;
+                    result.innerHTML += `Total Users: ${data.data.length}\n\n`;
+                    
+                    data.data.forEach(u => {
+                        result.innerHTML += `${u.name} - ${u.role_name} - ${u.email}\n`;
+                    });
+                } else {
+                    result.innerHTML = `<span class="error">❌ Error: ${data.message}</span>`;
+                }
+            } catch (error) {
+                result.innerHTML = `<span class="error">❌ Error: ${error.message}</span>`;
+            }
+        }
+        
+        async function testClasses() {
+            const result = document.getElementById('classesResult');
+            result.innerHTML = 'Loading...';
+            
+            try {
+                const response = await fetch('api/admin/classes.php');
+                const data = await response.json();
+                
+                if (data.success) {
+                    result.innerHTML = `<span class="success">✅ API Working</span>\n\n`;
+                    result.innerHTML += `Total Classes: ${data.data.length}\n\n`;
+                    
+                    const byDept = {};
+                    data.data.forEach(c => {
+                        if (!byDept[c.department_name]) {
+                            byDept[c.department_name] = [];
+                        }
+                        byDept[c.department_name].push(c.class_name);
+                    });
+                    
+                    Object.keys(byDept).forEach(dept => {
+                        result.innerHTML += `${dept}: ${byDept[dept].join(', ')}\n`;
+                    });
+                } else {
+                    result.innerHTML = `<span class="error">❌ Error: ${data.message}</span>`;
+                }
+            } catch (error) {
+                result.innerHTML = `<span class="error">❌ Error: ${error.message}</span>`;
+            }
+        }
+    </script>
+</body>
+</html>

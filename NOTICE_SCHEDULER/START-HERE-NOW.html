@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusChrono - Quick Start Guide</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; background: white; border-radius: 20px; padding: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        h1 { color: #667eea; font-size: 2.5em; margin-bottom: 10px; text-align: center; }
+        .subtitle { text-align: center; color: #666; margin-bottom: 30px; font-size: 1.1em; }
+        .step { background: #f8f9fa; border-left: 4px solid #667eea; padding: 20px; margin: 20px 0; border-radius: 8px; }
+        .step h2 { color: #667eea; margin-bottom: 10px; font-size: 1.5em; }
+        .step-number { background: #667eea; color: white; width: 35px; height: 35px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 10px; }
+        .btn { display: inline-block; padding: 12px 30px; background: #667eea; color: white; text-decoration: none; border-radius: 8px; margin: 10px 10px 10px 0; font-weight: bold; transition: all 0.3s; }
+        .btn:hover { background: #764ba2; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .btn-success { background: #28a745; }
+        .btn-success:hover { background: #218838; }
+        .btn-warning { background: #ffc107; color: #333; }
+        .btn-warning:hover { background: #e0a800; }
+        .status { padding: 15px; border-radius: 8px; margin: 20px 0; }
+        .status-warning { background: #fff3cd; border-left: 4px solid #ffc107; color: #856404; }
+        .status-success { background: #d4edda; border-left: 4px solid #28a745; color: #155724; }
+        .status-info { background: #d1ecf1; border-left: 4px solid #17a2b8; color: #0c5460; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 4px; font-family: 'Courier New', monospace; color: #e83e8c; }
+        ul { margin: 15px 0 15px 30px; }
+        li { margin: 8px 0; line-height: 1.6; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0; }
+        .feature { background: white; padding: 15px; border-radius: 8px; border: 2px solid #667eea; text-align: center; }
+        .credentials { background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 CampusChrono Quick Start</h1>
+        <p class="subtitle">Get your notice management system running in 3 steps</p>
+
+        <div class="status status-warning">
+            <strong>⚠️ IMPORTANT:</strong> Follow these steps in order. Don't skip any step!
+        </div>
+
+        <!-- Step 1 -->
+        <div class="step">
+            <h2><span class="step-number">1</span> Fix Database</h2>
+            <p>First, we need to setup departments and classes properly.</p>
+            <p style="margin-top: 10px;"><strong>Click this button:</strong></p>
+            <a href="fix-database-now.php" class="btn btn-warning" target="_blank">🔧 Fix Database Now</a>
+            <p style="margin-top: 15px; color: #666;">This will:</p>
+            <ul>
+                <li>Clear old data safely</li>
+                <li>Create 7 departments (CSE, IT, EXTC, MECH, CIVIL, EE, CHEM)</li>
+                <li>Create 32 classes properly linked to departments</li>
+                <li>Fix all foreign key relationships</li>
+            </ul>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step">
+            <h2><span class="step-number">2</span> Test Everything</h2>
+            <p>Verify that database, email, and all systems are working.</p>
+            <p style="margin-top: 10px;"><strong>Click this button:</strong></p>
+            <a href="test-everything.php" class="btn btn-success" target="_blank">🧪 Test System</a>
+            <p style="margin-top: 15px; color: #666;">This will test:</p>
+            <ul>
+                <li>✅ Database connection</li>
+                <li>✅ Departments and classes</li>
+                <li>✅ Email system with PHPMailer</li>
+                <li>✅ OTP generation</li>
+                <li>✅ Admin user</li>
+            </ul>
+            <div class="status status-info" style="margin-top: 15px;">
+                <strong>📧 Email Test:</strong> A test email will be sent to <code>campuschrono3103@gmail.com</code>. Check the inbox to confirm email is working!
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step">
+            <h2><span class="step-number">3</span> Start Using</h2>
+            <p>Everything is ready! Now you can use the system.</p>
+            
+            <div style="margin-top: 20px;">
+                <h3 style="color: #667eea; margin-bottom: 10px;">🔐 Admin Login</h3>
+                <div class="credentials">
+                    <strong>Email:</strong> admin@noticeboard.com<br>
+                    <strong>Password:</strong> admin123
+                </div>
+                <a href="index.html" class="btn">🔐 Login as Admin</a>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <h3 style="color: #667eea; margin-bottom: 10px;">👤 Test Registration</h3>
+                <p>Register a new student or staff member:</p>
+                <a href="register.html" class="btn btn-success">📝 Register New User</a>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <h3 style="color: #667eea; margin-bottom: 10px;">✨ What You Can Do</h3>
+                <div class="feature-grid">
+                    <div class="feature">📝 Register Users</div>
+                    <div class="feature">📧 Email OTP</div>
+                    <div class="feature">✅ Approve Users</div>
+                    <div class="feature">📢 Create Notices</div>
+                    <div class="feature">💬 Add Comments</div>
+                    <div class="feature">🔄 Bulk Operations</div>
+                    <div class="feature">👥 User Management</div>
+                    <div class="feature">🏢 Manage Departments</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Email System Info -->
+        <div class="status status-success">
+            <h3 style="margin-bottom: 10px;">📧 Email System Configured</h3>
+            <p><strong>Using:</strong> PHPMailer with Gmail SMTP</p>
+            <p><strong>Account:</strong> campuschrono3103@gmail.com</p>
+            <p><strong>App Password:</strong> Configured (qhvy psqt gsiy amex)</p>
+            <p style="margin-top: 10px;"><strong>Email Types:</strong></p>
+            <ul>
+                <li>🔐 OTP Verification (during registration)</li>
+                <li>📝 Application Submitted (after OTP verification)</li>
+                <li>✅ Account Approved (when admin approves)</li>
+                <li>❌ Account Rejected (when admin rejects with reason)</li>
+            </ul>
+        </div>
+
+        <!-- Features Summary -->
+        <div class="status status-info">
+            <h3 style="margin-bottom: 10px;">🎯 Complete Features</h3>
+            <ul>
+                <li><strong>3 User Roles:</strong> Student, Staff, Admin</li>
+                <li><strong>Registration:</strong> Role-based with OTP verification</li>
+                <li><strong>Email System:</strong> 4 automatic email types</li>
+                <li><strong>Admin Panel:</strong> User management, bulk operations, approvals</li>
+                <li><strong>Notice System:</strong> Create, edit, delete with file attachments</li>
+                <li><strong>Comments:</strong> Add, edit, delete comments on notices</li>
+                <li><strong>Departments:</strong> 7 departments with 32 classes</li>
+                <li><strong>Bulk Operations:</strong> Change multiple students' classes at once</li>
+                <li><strong>Profile:</strong> View and edit user profiles</li>
+                <li><strong>Security:</strong> Password hashing, session management, OTP expiry</li>
+            </ul>
+        </div>
+
+        <!-- Important Notes -->
+        <div class="status status-warning">
+            <h3 style="margin-bottom: 10px;">⚠️ Important Notes</h3>
+            <ul>
+                <li><strong>Delete test files:</strong> After testing, delete <code>fix-database-now.php</code> and <code>test-everything.php</code> for security</li>
+                <li><strong>Email domain:</strong> Users should register with college domain emails</li>
+                <li><strong>Roll numbers:</strong> Must be unique per class (not globally)</li>
+                <li><strong>Admin approval:</strong> Users cannot login until admin approves</li>
+                <li><strong>OTP validity:</strong> OTPs expire after 5 minutes</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px; padding-top: 30px; border-top: 2px solid #eee;">
+            <p style="color: #666;">CampusChrono - Notice Management System</p>
+            <p style="color: #999; font-size: 0.9em; margin-top: 5px;">Built with PHP, MySQL, JavaScript</p>
+        </div>
+    </div>
+</body>
+</html>

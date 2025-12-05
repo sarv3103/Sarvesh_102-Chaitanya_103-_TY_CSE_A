@@ -1,0 +1,61 @@
+========================================
+IMPORTANT: FOLDER NAME INFORMATION
+========================================
+
+Your project is currently in:
+D:\NOTICE_SCHEDULER\
+
+When you copy to XAMPP, you have TWO options:
+
+OPTION 1: Keep the current name
+--------------------------------
+Copy to: C:\xampp\htdocs\NOTICE_SCHEDULER\
+Access at: http://localhost/NOTICE_SCHEDULER
+
+OPTION 2: Rename to "notice-sender"
+------------------------------------
+Rename folder to "notice-sender"
+Copy to: C:\xampp\htdocs\notice-sender\
+Access at: http://localhost/notice-sender
+
+========================================
+WHAT TO UPDATE IF YOU RENAME
+========================================
+
+If you choose to rename the folder, update this file:
+config/config.php
+
+Change this line:
+define('BASE_URL', 'http://localhost/NOTICE_SCHEDULER');
+
+To this:
+define('BASE_URL', 'http://localhost/notice-sender');
+
+========================================
+RECOMMENDATION
+========================================
+
+✅ EASIEST: Keep the name "NOTICE_SCHEDULER"
+   - No changes needed
+   - Just copy and use
+   - Access at: http://localhost/NOTICE_SCHEDULER
+
+✅ OPTIONAL: Rename to "notice-sender"
+   - Matches documentation examples
+   - Update BASE_URL in config/config.php
+   - Access at: http://localhost/notice-sender
+
+Both options work perfectly!
+
+========================================
+CURRENT CONFIGURATION
+========================================
+
+The project is currently configured for:
+Folder Name: NOTICE_SCHEDULER
+URL: http://localhost/NOTICE_SCHEDULER
+
+This is already set in config/config.php
+You can use it as-is without any changes!
+
+========================================
