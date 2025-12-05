@@ -26,9 +26,9 @@ This guide will help you configure email functionality for OTP sending in the No
 ```php
 
 
-define('SMTP_USER', 'campuschrono3103@gmail.com'); // Your Gmail address
-define('SMTP_PASS', 'uzvp tqes ewor xpig'); // The 16-char App Password
-define('SMTP_FROM', 'campuschrono3103@gmail.com'); // Your Gmail address
+define('SMTP_USER', 'abc@xyz.com'); // Your Gmail address
+define('SMTP_PASS', 'scsa tsca asaa asdf'); // The 16-char App Password
+define('SMTP_FROM', 'abc@xyz.com'); // Your Gmail address
 define('EMAIL_ENABLED', true); // Change from false to true
 ```
 
