@@ -1,0 +1,63 @@
+# CampusChrono - Git Ignore File
+# Files and folders that should NOT be uploaded to GitHub
+
+# Configuration file with sensitive data (email passwords, etc.)
+config/config.php
+
+# Uploaded files (user-generated content)
+uploads/notices/*
+!uploads/notices/.gitkeep
+
+# Test and debug files
+test-*.php
+debug-*.php
+fix-*.php
+check-*.php
+diagnose-*.php
+execute-*.php
+emergency-*.php
+complete-*.php
+COMPLETE-*.php
+FIX-*.php
+FINAL-*.php
+FINAL-*.txt
+START-HERE-*.html
+
+# Documentation files with sensitive info
+EMAIL_SETUP.md
+DEPLOYMENT_READY.md
+REGISTRATION_ENHANCEMENTS_COMPLETE.md
+FINAL_FEATURES_COMPLETE.md
+
+# Temporary files
+*.tmp
+*.log
+*.cache
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# PHPMailer zip (if downloaded)
+vendor/*.zip
+
+# Database backup files
+*.sql.backup
+database/*.backup
