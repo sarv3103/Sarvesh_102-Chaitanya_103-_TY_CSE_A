@@ -25,8 +25,7 @@ This guide will help you configure email functionality for OTP sending in the No
 
 ```php
 
-pkpy mbqv bmzl ncgw
-uzvp tqes ewor xpig
+
 define('SMTP_USER', 'campuschrono3103@gmail.com'); // Your Gmail address
 define('SMTP_PASS', 'uzvp tqes ewor xpig'); // The 16-char App Password
 define('SMTP_FROM', 'campuschrono3103@gmail.com'); // Your Gmail address
